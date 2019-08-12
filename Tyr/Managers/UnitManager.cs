@@ -67,6 +67,7 @@ namespace Tyr.Managers
                 if (unit.Orders != null && unit.Orders.Count > 0 && unit.Orders[0].AbilityId == 1216)
                     CollectionUtil.Increment(Counts, UnitTypes.LAIR);
 
+
                 existingUnits.Add(unit.Tag);
 
                 if (unit.Passengers != null)
