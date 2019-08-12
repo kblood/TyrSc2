@@ -32,6 +32,7 @@ namespace Tyr.Agents
             list.Add(new MorphingType() { FromType = UnitTypes.OVERLORD, ToType = UnitTypes.OVERSEER, Ability = Abilities.MORPH_OVERSEER, Minerals = 50, Gas = 50 });
             list.Add(new MorphingType() { FromType = UnitTypes.CORRUPTOR, ToType = UnitTypes.BROOD_LORD, Ability = Abilities.MORPH_BROODLORD, Minerals = 150, Gas = 150 });
             list.Add(new MorphingType() { FromType = UnitTypes.ROACH, ToType = UnitTypes.RAVAGER, Ability = Abilities.MORPH_RAVAGER, Minerals = 25, Gas = 75 });
+            list.Add(new MorphingType() { FromType = UnitTypes.ZERGLING, ToType = UnitTypes.BANELING, Ability = Abilities.MORPH_ZERGLING_TO_BANELING, Minerals = 25, Gas = 25 });
 
             return list;
         }

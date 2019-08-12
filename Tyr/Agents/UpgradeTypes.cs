@@ -12,6 +12,8 @@ namespace Tyr.Agents
         public int Gas;
         public uint Previous;
 
+        public static uint GlialReconstitution = 2;
+        public static uint TunnelingClaws = 3;
         public static uint ChitinousPlating = 4;
         public static uint ConcussiveShells = 17;
         public static uint InfernalPreigniter = 19;
@@ -37,14 +39,17 @@ namespace Tyr.Agents
         public static uint ZergMissileWeapons2 = 60;
         public static uint ZergMissileWeapons3 = 61;
         public static uint ZergMissileWeapons = 61;
+        public static uint Burrow = 64;
         public static uint AdrenalGlands = 65;
         public static uint MetabolicBoost = 66;
         public static uint PathogenGlands = 74;
+        public static uint CentrificalHooks = 75;
         public static uint YamatoCannon = 76;
         public static uint Charge = 86;
         public static uint Blink = 87;
         public static uint WarpGate = 84;
         public static uint AnabolicSynthesis = 88;
+        public static uint OrganicCarapace = 91;
         public static uint NeuralParasite = 101;
         public static uint GroovedSpines = 134;
         public static uint MuscularAugments = 135;
@@ -55,6 +60,8 @@ namespace Tyr.Agents
         {
             Dictionary<uint, UpgradeType> result = new Dictionary<uint, UpgradeType>();
 
+            Add(result, new UpgradeType() { UpgradeID = GlialReconstitution, ProducingUnits = Set(UnitTypes.ROACH_WARREN), Minerals = 100, Gas = 100, Ability = 216 });
+            Add(result, new UpgradeType() { UpgradeID = TunnelingClaws, ProducingUnits = Set(UnitTypes.ROACH_WARREN), Minerals = 100, Gas = 100, Ability = 217 });
             Add(result, new UpgradeType() { UpgradeID = ChitinousPlating, ProducingUnits = Set(UnitTypes.ULTRALISK_CAVERN), Minerals = 150, Gas = 150, Ability = 265 });
             Add(result, new UpgradeType() { UpgradeID = ConcussiveShells, ProducingUnits = Set(UnitTypes.BARRACKS_TECH_LAB), Minerals = 50, Gas = 50, Ability = 732 });
             Add(result, new UpgradeType() { UpgradeID = BansheeCloak, ProducingUnits = Set(UnitTypes.STARPORT_TECH_LAB), Minerals = 100, Gas = 100, Ability = 790 });
@@ -85,7 +92,10 @@ namespace Tyr.Agents
             Add(result, new UpgradeType() { UpgradeID = AnabolicSynthesis, ProducingUnits = Set(UnitTypes.ULTRALISK_CAVERN), Minerals = 150, Gas = 150, Ability = 263 });
             Add(result, new UpgradeType() { UpgradeID = PathogenGlands, ProducingUnits = Set(UnitTypes.INFESTATION_PIT), Minerals = 150, Gas = 150, Ability = 1454 });
             Add(result, new UpgradeType() { UpgradeID = NeuralParasite, ProducingUnits = Set(UnitTypes.INFESTATION_PIT), Minerals = 150, Gas = 150, Ability = 1455 });
+            Add(result, new UpgradeType() { UpgradeID = CentrificalHooks, ProducingUnits = Set(UnitTypes.BANELING_NEST), Minerals = 150, Gas = 150, Ability = 1482 });
             Add(result, new UpgradeType() { UpgradeID = WarpGate, ProducingUnits = Set(UnitTypes.CYBERNETICS_CORE), Minerals = 50, Gas = 50, Ability = 1568 });
+            Add(result, new UpgradeType() { UpgradeID = OrganicCarapace, ProducingUnits = Set(UnitTypes.HATCHERY), Minerals = 100, Gas = 100, Ability = 1223 });
+            Add(result, new UpgradeType() { UpgradeID = Burrow, ProducingUnits = Set(UnitTypes.HATCHERY), Minerals = 100, Gas = 100, Ability = 1225 });
 
             return result;
         }

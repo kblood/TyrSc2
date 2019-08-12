@@ -76,6 +76,10 @@ namespace Tyr.Agents
         public static int MORPH_LURKER = 2332;
         public static int BURROW_DOWN = 2108;
         public static int BURROW_UP = 2110;
+        public static int BUILD_NYDUSWORM = 1768;
+        public static int NYDUSCANAL_LOAD = 2370;
+        public static int NYDUSCANAL_UNLOADALL = 2371;
+        public static int NYDUSCANAL_UNLOADUNIT = 2373;
         public static int CORROSIVE_BILE = 2338;
         public static int WIDOW_MINE_BURROW = 2095;
         public static int WIDOW_MINE_UNBURROW = 2097;
