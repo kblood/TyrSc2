@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using SC2APIProtocol;
 using Tyr.Agents;
 using Tyr.Tasks;
@@ -67,10 +67,6 @@ namespace Tyr.Managers
                 if (unit.Orders != null && unit.Orders.Count > 0 && unit.Orders[0].AbilityId == 1216)
                     CollectionUtil.Increment(Counts, UnitTypes.LAIR);
 
-                if (unit.UnitType == UnitTypes.EGG)
-                    CollectionUtil.Increment(Counts, Abilities.Creates[unit.Orders[0].AbilityId]);
-
-
                 existingUnits.Add(unit.Tag);
 
                 if (unit.Passengers != null)
@@ -88,12 +84,6 @@ namespace Tyr.Managers
                     agent.PreviousUnit = agent.Unit;
                     agent.Unit = unit;
 
-                    if (unit.UnitType == UnitTypes.LARVA
-                        && agent.LastAbility >= 0
-                        && Abilities.Creates.ContainsKey((uint)agent.LastAbility))
-                    {
-                        CollectionUtil.Increment(Counts, Abilities.Creates[(uint)agent.LastAbility]);
-                    }
                     agent.Command = null;
                     if (agent.Base != null)
                     {
