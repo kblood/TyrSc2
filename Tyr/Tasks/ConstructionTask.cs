@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using SC2APIProtocol;
 using Tyr.Agents;
 using Tyr.Managers;
@@ -32,6 +32,8 @@ namespace Tyr.Tasks
 
         public override bool DoWant(Agent agent)
         {
+            if (agent.Unit.UnitType == UnitTypes.NYDUS_NETWORK)
+                return true;
             if (!agent.IsWorker)
                 return false;
             if (BlockedWorkers.Contains(agent.Unit.Tag))
@@ -52,7 +54,12 @@ namespace Tyr.Tasks
         {
             List<UnitDescriptor> result = new List<UnitDescriptor>();
             foreach (BuildRequest request in UnassignedRequests)
-                result.Add(new UnitDescriptor() { Pos = request.Pos, Count = 1, UnitTypes = UnitTypes.WorkerTypes, Marker = request, MaxDist = MaxWorkerDist });
+            {
+                if (request.Type == UnitTypes.NYDUS_CANAL)
+                    result.Add(new UnitDescriptor() { Count = 1, UnitTypes = new HashSet<uint>() { UnitTypes.NYDUS_NETWORK }, Marker = request });
+                else
+                    result.Add(new UnitDescriptor() { Pos = request.Pos, Count = 1, UnitTypes = UnitTypes.WorkerTypes, Marker = request, MaxDist = MaxWorkerDist });
+            }
             return result;
         }
 
