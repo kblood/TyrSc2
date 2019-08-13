@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Diagnostics;
 using SC2API_CSharp;
 using SC2APIProtocol;
@@ -35,6 +35,8 @@ namespace Tyr
 
         public BuildingPlacer buildingPlacer;
         public int Frame { get; private set; }
+        public int GameFrame { get; private set; }
+        public uint GameStepsPerFrame { get; set; }
         public MapAnalyzer MapAnalyzer { get; internal set; } = new MapAnalyzer();
         public EnemyStrategyAnalyzer EnemyStrategyAnalyzer = new EnemyStrategyAnalyzer();
         public PreviousEnemyStrategies PreviousEnemyStrategies = new PreviousEnemyStrategies();
@@ -74,8 +76,27 @@ namespace Tyr
 
         private bool loggedError = false;
 
-        private long totalExecutionTime;
+        public long totalExecutionTime;
         private long maxExecutionTime;
+
+        public string GameTime
+        {
+            get
+            {
+                float time = GameFrame / 22.4f;
+                var t = System.TimeSpan.FromSeconds(time);
+                string gameTime = time.ToString(@"hh\:mm\:ss\:fff");
+                return gameTime;
+            } 
+        }
+
+        public float GameTimeInSeconds
+        {
+            get
+            {
+                return GameFrame / 22.4f;
+            }
+        }
 
         public Build FixedBuild;
 
@@ -99,19 +120,20 @@ namespace Tyr
 
         public Tyr()
         {
+            GameStepsPerFrame = 1;
             buildingPlacer = new BuildingPlacer(this);
             Bot = this;
         }
 
         public IEnumerable<Action> onFrame(ResponseObservation observation)
         {
+            uint stepsTakenThisFrame = GameConnection.StepsPerFrame;
+            GameConnection.StepsPerFrame = GameStepsPerFrame;
             Stopwatch stopWatch = Stopwatch.StartNew();
             actions = new List<Action>();
             DrawRequest = null;
             TextLine = 0;
             
-
-
             long time1 = 0;
             long time2 = 0;
             long time3 = 0;

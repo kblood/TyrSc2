@@ -17,8 +17,12 @@ namespace SC2API_CSharp
         string starcraftExe;
         string starcraftDir;
 
+        public uint StepsPerFrame { get; set; }
+
         public GameConnection()
-        { }
+        {
+            StepsPerFrame = 1;
+        }
 
         public void StartSC2Instance(int port)
         {
@@ -215,7 +219,7 @@ namespace SC2API_CSharp
 
                 Request stepRequest = new Request();
                 stepRequest.Step = new RequestStep();
-                stepRequest.Step.Count = 1;
+                stepRequest.Step.Count = StepsPerFrame;
                 await proxy.SendRequest(stepRequest);
             }
         }
