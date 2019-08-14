@@ -195,7 +195,7 @@ namespace Tyr
             }
 
             Frame++;
-
+            GameFrame += (int)stepsTakenThisFrame;
             stopWatch.Stop();
             totalExecutionTime += stopWatch.ElapsedMilliseconds;
             maxExecutionTime = System.Math.Max(maxExecutionTime, stopWatch.ElapsedMilliseconds);
