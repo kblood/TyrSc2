@@ -49,7 +49,7 @@ namespace Tyr.Agents
         public static uint Blink = 87;
         public static uint WarpGate = 84;
         public static uint AnabolicSynthesis = 88;
-        public static uint OrganicCarapace = 91;
+        public static uint PneumatizedCarapace = 91;
         public static uint NeuralParasite = 101;
         public static uint GroovedSpines = 134;
         public static uint MuscularAugments = 135;
@@ -94,7 +94,7 @@ namespace Tyr.Agents
             Add(result, new UpgradeType() { UpgradeID = NeuralParasite, ProducingUnits = Set(UnitTypes.INFESTATION_PIT), Minerals = 150, Gas = 150, Ability = 1455 });
             Add(result, new UpgradeType() { UpgradeID = CentrificalHooks, ProducingUnits = Set(UnitTypes.BANELING_NEST), Minerals = 150, Gas = 150, Ability = 1482 });
             Add(result, new UpgradeType() { UpgradeID = WarpGate, ProducingUnits = Set(UnitTypes.CYBERNETICS_CORE), Minerals = 50, Gas = 50, Ability = 1568 });
-            Add(result, new UpgradeType() { UpgradeID = OrganicCarapace, ProducingUnits = Set(UnitTypes.HATCHERY), Minerals = 100, Gas = 100, Ability = 1223 });
+            Add(result, new UpgradeType() { UpgradeID = PneumatizedCarapace, ProducingUnits = Set(UnitTypes.HATCHERY), Minerals = 100, Gas = 100, Ability = 1223 });
             Add(result, new UpgradeType() { UpgradeID = Burrow, ProducingUnits = Set(UnitTypes.HATCHERY), Minerals = 100, Gas = 100, Ability = 1225 });
 
             return result;
